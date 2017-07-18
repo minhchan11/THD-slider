@@ -32,12 +32,12 @@ gulp.task('jsBrowserify', ['concatInterface'],function() {
 });
 
 gulp.task('concatInterface', function() {
-  return gulp.src(['./js/*-interface.js'])
+  return gulp.src(['./js/*.js'])
     .pipe(concat('allConcat.js'))
     .pipe(gulp.dest('./tmp'));
 });
 
-gulp.task("minifyScrpts", ["jsBrowserify"], function() {
+gulp.task("minifyScripts", ["jsBrowserify"], function() {
   return gulp.src("./build/js/app/js")
   .pipe(uglify())
   .pipe(gulp.dest("./build/js"));
@@ -86,7 +86,7 @@ gulp.task('serve', function() {
     }
   });
   gulp.watch(['js/*.js'], ['jsBuild']);
-  gulp.watch(['scss/*.scss'], ['jsBuild']);
+  gulp.watch(['scss/*.scss'], ['cssBuild']);
   gulp.watch(['bower.json'], ['bowerBuild']);
   gulp.watch(['*.html'], ['htmlBuild']);
 });

@@ -17,6 +17,11 @@
   "dependencies": {
     "jquery": "^3.2.0",
     "bootstrap": "^3.3.7",
-    "seiyria-bootstrap-slider": "^9.8.1"
+    "seiyria-bootstrap-slider": "^9.8.1",
+    "dustjs-linkedin": "^2.7.5",
+    "dustjs": "^0.3.0"
+  },
+  "devDependencies": {
+    "dustjs-linkedin": "^2.7.5"
   }
 }
