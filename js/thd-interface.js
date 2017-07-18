@@ -12,15 +12,15 @@ $(document).ready(function(){
   });
 
   //urban
-  $("#aadtUrban1").attr("value", "1.2");
-  var inboundUrban1Slider = $("#inboundUrban1").slider();
-  var inboundUrban1 = inboundUrban1Slider.slider('getValue');
-  $("#inboundUrban1Value").text(inboundUrban1);
-  $("#outboundUrban1").attr("value", 100-parseInt(inboundUrban1) + " %");
-  $("#inboundUrban1").on("slide", function(slideEvt) {
-  	$("#inboundUrban1Value").text(slideEvt.value);
-    $("#outboundUrban1").attr("value",100-parseInt(slideEvt.value) + " %");
-  });
+  // $("#aadtUrban1").attr("value", "1.2");
+  // var inboundUrban1Slider = $("#inboundUrban1").slider();
+  // var inboundUrban1 = inboundUrban1Slider.slider('getValue');
+  // $("#inboundUrban1Value").text(inboundUrban1);
+  // $("#outboundUrban1").attr("value", 100-parseInt(inboundUrban1) + " %");
+  // $("#inboundUrban1").on("slide", function(slideEvt) {
+  // 	$("#inboundUrban1Value").text(slideEvt.value);
+  //   $("#outboundUrban1").attr("value",100-parseInt(slideEvt.value) + " %");
+  // });
 
   // $("#generate").click(function() {
   //  $("#proto").append("<tr><td>0-1</td><td><input type='number' id='aadtRural1' name='aadtRural1' class='form-control'></td>
