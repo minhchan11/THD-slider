@@ -31,7 +31,7 @@ $(document).ready(function(){
   //    </td><td><input id='inboundUrban1' data-slider-id='ex1Slider' type='text' data-slider-min='0' data-slider-max='100' data-slider-step='1' data-slider-value='47'/><span id='inboundUrban1Value'></span> %</td>
   //    <td><input type='text' id='outboundUrban1' name='outboundUrban1' class='form-control' disabled=true></td>
   //  </tr>"
- );
-  })
+ // );
+ //  })
 
 })
