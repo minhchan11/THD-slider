@@ -1,13 +1,13 @@
 function trafficDistributionRender(e) {
-            var template = '<tr>'+
-                              '<td>0-1</td>' +
+            var template = '{#.}<tr>'+
+                              '<td>{$idx} - {@math key="{$idx}" method="add" operand="1"/}</td>' +
                               '<td>'+
-                                '<input id="inboundRural1" data-slider-id="ex1Slider" type="text" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="48" />' +
+                                '<input id="inboundRural' + '{$idx}" data-slider-id="ex1Slider" type="text" data-slider-min="0" data-slider-max="10" data-slider-step="0.1" data-slider-value="{.}" />' +
                               '</td>' +
                               '<td>' +
                               '<input type="text" id="outboundRural1" name="outboundRural1" class="form-control" disabled=true>' +
                               '</td>'+
-                          '</tr>';
+                          '</tr>{/.}';
 
             var dataTemplate = dust.compile(template, "trafficDistTemplate");
 

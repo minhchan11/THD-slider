@@ -1,14 +1,14 @@
 $(document).ready(function(){
 
   //rural
-  $("#aadtRural1").attr("value", "1.8");
-  var inboundRural1Slider = $("#inboundRural1").slider();
-  var inboundRural1 = inboundRural1Slider.slider('getValue');
-  $("#inboundRural1Value").text(inboundRural1);
-  $("#outboundRural1").attr("value", 100-parseInt(inboundRural1) + " %");
-  $("#inboundRural1").on("slide", function(slideEvt) {
-  	$("#inboundRural1Value").text(slideEvt.value);
-    $("#outboundRural1").attr("value",100-parseInt(slideEvt.value) + " %");
+  $("#aadtRural0").attr("value", "0.8");
+  var inboundRural0Slider = $("#inboundRural0").slider();
+  var inboundRural0 = inboundRural0Slider.slider('getValue');
+  $("#inboundRural0Value").text(inboundRural0);
+  $("#outboundRural0").attr("value", 000-parseInt(inboundRural0) + " %");
+  $("#inboundRural0").on("slide", function(slideEvt) {
+  	$("#inboundRural0Value").text(slideEvt.value);
+    $("#outboundRural0").attr("value",100-parseInt(slideEvt.value) + " %");
   });
 
   //urban
