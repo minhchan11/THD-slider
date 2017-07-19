@@ -8,7 +8,17 @@ $(document).ready(function(){
                     '</td>' +
                     '<td>' +
                     '<input type="hidden" id="trafficDefault_'+ '{$idx}" value={@math key="{.}" method="multiply" operand="100"/}>' +
-                    '<input type="text" id="trafficValue_'+'{$idx}" class="form-control">' +
+                    '<input type="text" id="trafficValue_'+'{$idx}" class="form-control" disabled=true>' +
+                    '</td>'+
+                    '<td>' +
+                      '<label class="radio-inline">' +
+                         '<input type="radio" name="displayOptions'+'{$idx}" id="enable'+'{$idx}">' +
+                         'Enable' +
+                       '</label>' +
+                       '<label class="radio-inline">' +
+                         '<input type="radio" name="displayOptions'+'{$idx}" id="disable'+'{$idx}" checked>' +
+                          'Disable' +
+                        '</label>'+
                     '</td>'+
                 '</tr>{/.}';
 
@@ -32,7 +42,7 @@ $(document).ready(function(){
     //Create two way binding between input field and slider
     $("#trafficValue_"+i).on("change", function() {
       currentIndex = (this.id).split("_").pop();
-    $("#traffic_"+currentIndex).slider('setValue', this.value);
+    $("#traffic_"+currentIndex).slider('setValue', this.value, true, true);
     });
     $("#traffic_"+i).on("slide", function(slideEvt) {
       currentIndex = ((slideEvt.currentTarget.id).split("_").pop());
