@@ -2,10 +2,11 @@ function trafficDistributionRender(e) {
             var template = '{#.}<tr>'+
                               '<td>{$idx} - {@math key="{$idx}" method="add" operand="1"/}</td>' +
                               '<td>'+
-                                '<input id="inboundRural' + '{$idx}" data-slider-id="ex1Slider" type="text" data-slider-min="0" data-slider-max="10" data-slider-step="0.1" data-slider-value="{.}" />' +
+                                '<input id="traffic' + '{$idx}" type="text" data-slider-min="0" data-slider-max="10" data-slider-step="0.1" data-slider-value="2" />' +
                               '</td>' +
                               '<td>' +
-                              '<input type="text" id="outboundRural1" name="outboundRural1" class="form-control" disabled=true>' +
+                              '<input type="text" id="trafficDefault'+ '{$idx}" value={@math key="{.}" method="multiply" operand="100"/}>' +
+                              '<input type="text" id="trafficValue'+'{$idx}" class="form-control" disabled=true>' +
                               '</td>'+
                           '</tr>{/.}';
 
