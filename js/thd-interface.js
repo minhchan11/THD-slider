@@ -12,11 +12,11 @@ $(document).ready(function(){
                     '</td>'+
                     '<td>' +
                       '<label class="radio-inline">' +
-                         '<input type="radio" name="displayOptions'+'{$idx}" id="enable'+'{$idx}">' +
+                         '<input type="radio" name="displayOptions'+'{$idx}" id="enable_'+'{$idx}">' +
                          'Enable' +
                        '</label>' +
                        '<label class="radio-inline">' +
-                         '<input type="radio" name="displayOptions'+'{$idx}" id="disable'+'{$idx}" checked>' +
+                         '<input type="radio" name="displayOptions'+'{$idx}" id="disable_'+'{$idx}" checked>' +
                           'Disable' +
                         '</label>'+
                     '</td>'+
@@ -30,23 +30,28 @@ $(document).ready(function(){
   dust.render("trafficDistTemplate", trafficDistDefaults, function(err, out) {
     $("#trafficTable").find('tbody').append(out);
   });
-
   for (var i = 0; i < 24; i++) {
-    var currentIndex;
-    //instantiate slider
-    var trafficSlider = $("#traffic_"+i).slider();
-    //get value from hidden input field
-    var trafficDefault = (parseFloat($("#trafficDefault_"+i).val())).toFixed(2);
-    //Set visible input field to default value
-    $("#trafficValue_"+i).attr("value", trafficDefault);
-    //Create two way binding between input field and slider
-    $("#trafficValue_"+i).on("change", function() {
-      currentIndex = (this.id).split("_").pop();
-    $("#traffic_"+currentIndex).slider('setValue', this.value, true, true);
-    });
-    $("#traffic_"+i).on("slide", function(slideEvt) {
-      currentIndex = ((slideEvt.currentTarget.id).split("_").pop());
-      $("#trafficValue_"+currentIndex).attr("value", slideEvt.value);
-    });
-  }
+  var currentIndex;
+  $("#enable_" + i).click(function() {
+    $("#trafficValue_" + this.id.split("_").pop()).prop("disabled", false);
+  });
+  $("#disable_" + i).click(function() {
+    $("#trafficValue_" + this.id.split("_").pop()).prop("disabled", true);
+  });
+  //instantiate slider
+  var trafficSlider = $("#traffic_" + i).slider();
+  //get value from hidden input field
+  var trafficDefault = (parseFloat($("#trafficDefault_" + i).val())).toFixed(2);
+  //Set visible input field to default value
+  $("#trafficValue_" + i).attr("value", trafficDefault);
+  //Create two way binding between input field and slider
+  $("#trafficValue_" + i).on("change", function() {
+    currentIndex = (this.id).split("_").pop();
+    $("#traffic_" + currentIndex).slider('setValue', this.value, true, true);
+  });
+  $("#traffic_" + i).on("slide", function(slideEvt) {
+    currentIndex = ((slideEvt.currentTarget.id).split("_").pop());
+    $("#trafficValue_" + currentIndex).attr("value", slideEvt.value);
+  });
+}
 })
