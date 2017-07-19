@@ -1,4 +1,7 @@
 var trafficDistDefaults = require('./../js/thd.js').trafficDistDefaults;
+var changeIndividualNum = require('./../js/thd.js').changeIndividualNum;
+var renderChecking = require('./../js/thd.js').renderChecking;
+
 
 $(document).ready(function(){
   var template = '{#.}<tr>'+
@@ -30,6 +33,10 @@ $(document).ready(function(){
   dust.render("trafficDistTemplate", trafficDistDefaults, function(err, out) {
     $("#trafficTable").find('tbody').append(out);
   });
+
+  renderChecking(trafficDistDefaults);
+
+  // loop to change the value of elements in the array through UI
   for (var i = 0; i < 24; i++) {
   var currentIndex;
   $("#enable_" + i).click(function() {
@@ -38,20 +45,28 @@ $(document).ready(function(){
   $("#disable_" + i).click(function() {
     $("#trafficValue_" + this.id.split("_").pop()).prop("disabled", true);
   });
+
   //instantiate slider
   var trafficSlider = $("#traffic_" + i).slider();
+
   //get value from hidden input field
   var trafficDefault = (parseFloat($("#trafficDefault_" + i).val())).toFixed(2);
+
   //Set visible input field to default value
   $("#trafficValue_" + i).attr("value", trafficDefault);
+
   //Create two way binding between input field and slider
   $("#trafficValue_" + i).on("change", function() {
     currentIndex = (this.id).split("_").pop();
     $("#traffic_" + currentIndex).slider('setValue', this.value, true, true);
+    trafficDistDefaults = changeIndividualNum(trafficDistDefaults, currentIndex, this.value);
+    renderChecking(trafficDistDefaults);
   });
   $("#traffic_" + i).on("slide", function(slideEvt) {
     currentIndex = ((slideEvt.currentTarget.id).split("_").pop());
     $("#trafficValue_" + currentIndex).attr("value", slideEvt.value);
+    trafficDistDefaults = changeIndividualNum(trafficDistDefaults, currentIndex, this.value);
+    renderChecking(trafficDistDefaults);
   });
 }
 })

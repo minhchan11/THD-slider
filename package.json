@@ -34,5 +34,8 @@
   "bugs": {
     "url": "https://github.com/minhchan11/gulp-nightwatch/issues"
   },
-  "homepage": "https://github.com/minhchan11/gulp-nightwatch#readme"
+  "homepage": "https://github.com/minhchan11/gulp-nightwatch#readme",
+  "dependencies": {
+    "gulp-order": "^1.1.1"
+  }
 }

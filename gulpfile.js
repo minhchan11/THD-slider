@@ -5,6 +5,7 @@ var jshint = require('gulp-jshint');
 var uglify = require('gulp-uglify');
 var utilities = require('gulp-util');
 var concat = require('gulp-concat');
+var order = require("gulp-order");
 var del = require('del');
 var buildProduction = utilities.env.production;
 var browserSync = require('browser-sync').create();
@@ -33,6 +34,10 @@ gulp.task('jsBrowserify', ['concatInterface'],function() {
 
 gulp.task('concatInterface', function() {
   return gulp.src(['./js/*.js'])
+              .pipe(order([
+              "js/*-interface.js",
+              "js/*.js"
+            ]))
     .pipe(concat('allConcat.js'))
     .pipe(gulp.dest('./tmp'));
 });
