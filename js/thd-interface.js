@@ -8,7 +8,7 @@ $(document).ready(function(){
                     '</td>' +
                     '<td>' +
                     '<input type="hidden" id="trafficDefault_'+ '{$idx}" value={@math key="{.}" method="multiply" operand="100"/}>' +
-                    '<input type="text" id="trafficValue_'+'{$idx}" class="form-control" disabled=true>' +
+                    '<input type="text" id="trafficValue_'+'{$idx}" class="form-control">' +
                     '</td>'+
                 '</tr>{/.}';
 
@@ -22,11 +22,16 @@ $(document).ready(function(){
   });
 
   for (var i = 0; i < 24; i++) {
+    var currentIndex;
     var trafficSlider = $("#traffic_"+i).slider();
     var trafficDefault = (parseFloat($("#trafficDefault_"+i).val())).toFixed(2);
     $("#trafficValue_"+i).attr("value", trafficDefault);
+    $("#trafficValue_"+i).on("change", function() {
+      currentIndex = (this.id).split("_").pop();
+    $("#traffic_"+currentIndex).slider('setValue', this.value);
+    });
     $("#traffic_"+i).on("slide", function(slideEvt) {
-      var currentIndex = ((slideEvt.currentTarget.id).split("_").pop());
+      currentIndex = ((slideEvt.currentTarget.id).split("_").pop());
       $("#trafficValue_"+currentIndex).attr("value", slideEvt.value);
     });
   }
