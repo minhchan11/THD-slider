@@ -104,13 +104,13 @@ $(document).ready(function(){
   $("#trafficValue_" + i).on("change", function() {
     currentIndex = (this.id).split("_").pop();
     $("#traffic_" + currentIndex).slider('setValue', this.value, true, true);
-    trafficDistDefaults = changeIndividualNum(trafficDistDefaults, currentIndex, this.value);
+    trafficDistDefaults = changeIndividualNum(trafficDistDefaults, currentIndex, this.value/100);
     renderChecking(trafficDistDefaults);
   });
   $("#traffic_" + i).on("slide", function(slideEvt) {
     currentIndex = ((slideEvt.currentTarget.id).split("_").pop());
     $("#trafficValue_" + currentIndex).attr("value", slideEvt.value);
-    trafficDistDefaults = changeIndividualNum(trafficDistDefaults, currentIndex, this.value);
+    trafficDistDefaults = changeIndividualNum(trafficDistDefaults, currentIndex, this.value/100);
     renderChecking(trafficDistDefaults);
   });
 }
