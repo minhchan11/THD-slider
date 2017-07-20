@@ -40,3 +40,14 @@ exports.renderChecking = function(dataArray){
     $("#currentArray").html(out);
   });
 }
+
+exports.total = function(array) {
+  var totalPercentage = array.reduce(function(sum, value) {
+  return sum + value;
+}, 0);
+  if (totalPercentage > 1) {
+    $(".alert").show();
+  } else {
+    $(".alert").hide();
+  }
+}
