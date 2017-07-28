@@ -8,7 +8,8 @@ module.exports = {
       .assert.title('Traffic Hourly Distribution')
       .click('input[id="enable_1"]')
       .setValue('#trafficValue_1', '10')
-      .click('input[id="disable_1"]')
+      .click('.jumbotron')
+      .pause(1000)
       .verify.visible(".alert-danger")
       .saveScreenshot(config.imgpath(browser) + 'errorShown.png')
       .end();
