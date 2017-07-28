@@ -28,23 +28,24 @@ exports.changeIndividualNum = function(thisArray,index,newNumber){
     return thisArray;
 }
 
-exports.renderChecking = function(dataArray){
-  var myTemplate = '{#.}<li>{.}</li>{/.}';
-
-  var dataTemplate = dust.compile(myTemplate, "checkingTemplate");
-
-  // load the template into the Dust cache
-  dust.loadSource(dataTemplate);
-
-  dust.render("checkingTemplate", dataArray, function(err, out) {
-    $("#currentArray").html(out);
-  });
-}
+// exports.renderChecking = function(dataArray){
+//   var myTemplate = '{#.}<li>{.}</li>{/.}';
+//
+//   var dataTemplate = dust.compile(myTemplate, "checkingTemplate");
+//
+//   // load the template into the Dust cache
+//   dust.loadSource(dataTemplate);
+//
+//   dust.render("checkingTemplate", dataArray, function(err, out) {
+//     $("#currentArray").html(out);
+//   });
+// }
 
 exports.total = function(array) {
   var totalPercentage = array.reduce(function(sum, value) {
   return sum + value;
 }, 0);
+  $("#newTotal").val((totalPercentage*100).toFixed(2));
   if (totalPercentage > 1) {
     $(".alert").show();
   } else {

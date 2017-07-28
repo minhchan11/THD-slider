@@ -17,13 +17,6 @@
 
   <div class="container">
     <h1 class="jumbotron">Traffic Hourly distribution</h1>
-    <div class="well">
-      <h5>The current array is: <br>
-        <ul>
-        <div id="currentArray"></div>
-        </ul>
-        (this is just for checking)</h5>
-    </div>
     <div class="alert alert-danger">
    <strong>Out of range!</strong> The current total percentage is more than 100%.
    </div>
@@ -35,13 +28,20 @@
             <thead>
               <tr>
                 <th>Hour</th>
-                <th>AADT Rural(%)</th>
-                <th>AADT Rural</th>
+                <th>AADT (%) Default Value</th>
+                <th>AADT (%) Custom Input</th>
+                <th>Edit value by sliding</th>
                 <th>Manual input</th>
               </tr>
             </thead>
             <tbody>
-              <div id="hours"></div>
+              <tr>
+                <td>Default Total:</td>
+                <td>100</td>
+                <td>Calculated Total:</td>
+                <td><input type="text" id="newTotal" value="100" class="form-control" disabled=true></td>
+                <td></td>
+              </tr>
             </tbody>
           </table>
         </div>

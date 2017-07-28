@@ -8,6 +8,9 @@ $(document).ready(function(){
   var template = '{#.}<tr>'+
                     '<td>{$idx} - {@math key="{$idx}" method="add" operand="1"/}</td>' +
                     '<td>'+
+                      '<span id="trafficDefaultDisplay_'+ '{$idx}"></span>' +
+                    '</td>' +
+                    '<td>'+
                       '<input id="traffic_' + '{$idx}" type="text" data-slider-id="trafficSlider_'+'{$idx}" data-slider-min="0" data-slider-max="15" data-slider-step="0.01" data-slider-value={@math key="{.}" method="multiply" operand="100"/} />' +
                     '</td>' +
                     '<td>' +
@@ -32,10 +35,10 @@ $(document).ready(function(){
   dust.loadSource(dataTemplate);
 
   dust.render("trafficDistTemplate", trafficDistDefaults, function(err, out) {
-    $("#trafficTable").find('tbody').append(out);
+    $("#trafficTable").find('tbody').prepend(out);
   });
 
-  renderChecking(trafficDistDefaults);
+  // renderChecking(trafficDistDefaults);
 
   // loop to change the value of elements in the array through UI
   for (var i = 0; i < 24; i++) {
@@ -55,6 +58,7 @@ $(document).ready(function(){
 
   //Set visible input field to default value
   $("#trafficValue_" + i).attr("value", trafficDefault);
+  $("#trafficDefaultDisplay_" + i).text(trafficDefault);
 
 
   //Create two way binding between input field and slider
@@ -62,14 +66,12 @@ $(document).ready(function(){
     currentIndex = (this.id).split("_").pop();
     $("#traffic_" + currentIndex).slider('setValue', this.value, true, true);
     trafficDistDefaults = changeIndividualNum(trafficDistDefaults, currentIndex, this.value/100);
-    renderChecking(trafficDistDefaults);
     total(trafficDistDefaults);
   });
   $("#traffic_" + i).on("slide", function(slideEvt) {
     currentIndex = ((slideEvt.currentTarget.id).split("_").pop());
     $("#trafficValue_" + currentIndex).attr("value", slideEvt.value);
     trafficDistDefaults = changeIndividualNum(trafficDistDefaults, currentIndex, this.value/100);
-    renderChecking(trafficDistDefaults);
     total(trafficDistDefaults);
   });
 }
