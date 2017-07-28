@@ -47,7 +47,7 @@ exports.total = function(array) {
   return sum + value;
 }, 0);
   $("#newTotal").val((totalPercentage*100).toFixed(2));
-  if (totalPercentage > 1) {
+  if (totalPercentage.toFixed(2) > 1.00) {
     $(".alert").show();
   } else {
     $(".alert").hide();
@@ -133,9 +133,6 @@ $(document).ready(function(){
   });
 }
 
-
-
-
 })
 
 exports.trafficDistDefaults = [0.01269013,
@@ -186,7 +183,7 @@ exports.total = function(array) {
   return sum + value;
 }, 0);
   $("#newTotal").val((totalPercentage*100).toFixed(2));
-  if (totalPercentage > 1) {
+  if (totalPercentage.toFixed(2) > 1.00) {
     $(".alert").show();
   } else {
     $(".alert").hide();
